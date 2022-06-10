@@ -101,7 +101,8 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
         SELECT product_id, COUNT(customer_id) AS Times_Ordered 
         FROM sales 
         GROUP BY product_id 
-        ORDER BY Times_Ordered DESC;
+        ORDER BY Times_Ordered DESC
+        LIMIT 1;
 
 
 5. Which item was the most popular for each customer?
