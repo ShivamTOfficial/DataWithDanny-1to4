@@ -3,7 +3,9 @@ Welcome to the first Case Study in a series of 8 of them. </br>
 The DataSet and the questions have all been gathered from [8 Week SQL Challenge](https://8weeksqlchallenge.com/case-study-1/)
 
 
-    C:\Users\Shivam Tyagi\OneDrive\Documents\Desktop\SQLite DB> sqlite3 dannys_diner.db
+[ER Diagram](https://dbdiagram.io/d/62a2d15c92b33b4f51393775)
+
+    sqlite3 dannys_diner.db
     
     SQLite version 3.38.5 2022-05-06 15:25:27
     Enter ".help" for usage hints.
