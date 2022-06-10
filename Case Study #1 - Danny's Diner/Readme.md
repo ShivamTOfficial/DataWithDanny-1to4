@@ -97,7 +97,7 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
                 ON m.product_id = s.product_id) 
         WHERE rnk =1;
         
-        OR
+        **OR**
         
          WITH rnk_table as 
          (
@@ -111,10 +111,11 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
-        SELECT product_id, COUNT(customer_id) AS Times_Ordered 
-        FROM sales 
-        GROUP BY product_id 
-        ORDER BY Times_Ordered DESC
+        SELECT s.product_id, product_name, COUNT(customer_id) AS Most_Ordered
+        FROM sales s JOIN menu m
+        ON s.product_id = m.product_id
+        GROUP BY s.product_id
+        ORDER BY Most_Ordered
         LIMIT 1;
 
 
