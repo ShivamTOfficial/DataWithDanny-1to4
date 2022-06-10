@@ -90,10 +90,6 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
 
 3. What was the first item from the menu purchased by each customer?
 
-        SELECT customer_id, m.product_id, product_name
-        FROM sales s JOIN menu m
-          ON s.product_id = m.product_id 
-        GROUP BY customer_id;
 
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
