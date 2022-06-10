@@ -1,3 +1,67 @@
 # Danny's Diner
 Welcome to the first Case Study in a series of 8 of them. </br>
 The DataSet and the questions have all been gathered from [8 Week SQL Challenge](https://8weeksqlchallenge.com/case-study-1/)
+
+
+    C:\Users\Shivam Tyagi\OneDrive\Documents\Desktop\SQLite DB> sqlite3 dannys_diner.db
+    
+    SQLite version 3.38.5 2022-05-06 15:25:27
+    Enter ".help" for usage hints.
+    
+</br>
+    
+    sqlite> CREATE TABLE sales (
+       ...>   "customer_id" VARCHAR(1),
+       ...>   "order_date" DATE,
+       ...>   "product_id" INTEGER
+       ...> );
+
+
+    sqlite> INSERT INTO sales
+       ...>   ("customer_id", "order_date", "product_id")
+       ...> VALUES
+       ...>   ('A', '2021-01-01', '1'),
+       ...>   ('A', '2021-01-01', '2'),
+       ...>   ('A', '2021-01-07', '2'),
+       ...>   ('A', '2021-01-10', '3'),
+       ...>   ('A', '2021-01-11', '3'),
+       ...>   ('A', '2021-01-11', '3'),
+       ...>   ('B', '2021-01-01', '2'),
+       ...>   ('B', '2021-01-02', '2'),
+       ...>   ('B', '2021-01-04', '1'),
+       ...>   ('B', '2021-01-11', '1'),
+       ...>   ('B', '2021-01-16', '3'),
+       ...>   ('B', '2021-02-01', '3'),
+       ...>   ('C', '2021-01-01', '3'),
+       ...>   ('C', '2021-01-01', '3'),
+       ...>   ('C', '2021-01-07', '3');
+       
+</br>
+
+    sqlite> CREATE TABLE menu (
+       ...>   "product_id" INTEGER,
+       ...>   "product_name" VARCHAR(5),
+       ...>   "price" INTEGER
+       ...> );
+       
+       
+    sqlite> INSERT INTO menu
+       ...>   ("product_id", "product_name", "price")
+       ...> VALUES
+       ...>   ('1', 'sushi', '10'),
+       ...>   ('2', 'curry', '15'),
+       ...>   ('3', 'ramen', '12');
+       
+</br>
+
+    sqlite> CREATE TABLE members (
+       ...>   "customer_id" VARCHAR(1),
+       ...>   "join_date" DATE
+       ...> );
+       
+       
+    sqlite> INSERT INTO members
+       ...>   ("customer_id", "join_date")
+       ...> VALUES
+       ...>   ('A', '2021-01-07'),
+       ...>   ('B', '2021-01-09');
