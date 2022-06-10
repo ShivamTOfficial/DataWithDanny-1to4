@@ -89,6 +89,7 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
            
 
 3. What was the first item from the menu purchased by each customer?
+        
         SELECT DISTINCT customer_id, product_id, product_name 
         FROM 
             (SELECT s.*, m.*, RANK() OVER (partition by customer_id ORDER BY order_date) AS rnk 
@@ -108,27 +109,7 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
 
 5. Which item was the most popular for each customer?
 
-         SELECT s.product_id, product_name, COUNT(customer_id) AS Times_Ordered 
-         FROM sales s JOIN (SELECT product_id, product_name FROM menu) t 
-           ON s.product_id = t.product_id 
-         GROUP BY s.product_id 
-         ORDER BY Times_Ordered DESC;
-            
-         OR
-         
-         SELECT m.product_id, product_name, COUNT(*) AS Times_Ordered 
-         FROM sales s JOIN menu m 
-           ON s.product_id = m.product_id 
-         GROUP BY m.product_id, product_name 
-         ORDER BY Times_Ordered DESC;
-            
-          OR
-          
-          SELECT m.product_id, product_name, COUNT(customer_id) AS Times_Ordered 
-          FROM sales s LEFT JOIN menu m 
-            ON s.product_id = m.product_id 
-          GROUP BY m.product_id, product_name 
-          ORDER BY Times_Ordered DESC;
+   
 
 
 6. Which item was purchased first by the customer after they became a member?
