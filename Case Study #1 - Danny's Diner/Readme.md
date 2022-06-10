@@ -97,7 +97,7 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
                 ON m.product_id = s.product_id) 
         WHERE rnk =1;
         
-        **OR**
+**OR**
         
          WITH rnk_table as 
          (
