@@ -96,7 +96,18 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
               FROM menu m JOIN sales s 
                 ON m.product_id = s.product_id) 
         WHERE rnk =1;
-
+        
+        OR
+        
+         WITH rnk_table as 
+         (
+            SELECT s.*, m.*, RANK() OVER (partition by customer_id ORDER BY order_date) AS rnk
+            FROM menu m JOIN sales s
+            ON m.product_id = s.product_id
+          )
+         SELECT DISTINCT customer_id, product_id, product_name
+         FROM rnk_table
+         WHERE rnk = 1;
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
