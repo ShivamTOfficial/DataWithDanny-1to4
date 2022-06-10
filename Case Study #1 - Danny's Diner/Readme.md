@@ -75,58 +75,58 @@ The DataSet and the questions have all been gathered from [8 Week SQL Challenge]
 1. What is the total amount each customer spent at the restaurant?
        
        SELECT customer_id, SUM(price) as Total_Amt
-           ...> FROM sales s JOIN menu m
-           ...> ON s.product_id = m.product_id
-           ...> GROUP BY customer_id;
+       FROM sales s JOIN menu m
+         ON s.product_id = m.product_id
+       GROUP BY customer_id;
 
 
 2. How many days has each customer visited the restaurant?
 
          SELECT customer_id, count(DISTINCT order_date) AS No_Of_Visits
-           ...> FROM sales s JOIN menu m
-           ...>   ON s.product_id = m.product_id
-           ...> GROUP BY customer_id;
+         FROM sales s JOIN menu m
+           ON s.product_id = m.product_id
+         GROUP BY customer_id;
            
 
 3. What was the first item from the menu purchased by each customer?
 
         SELECT customer_id, m.product_id, product_name
-           ...> FROM sales s JOIN menu m
-           ...>  ON s.product_id = m.product_id 
-           ...>  GROUP BY customer_id;
+        FROM sales s JOIN menu m
+          ON s.product_id = m.product_id 
+        GROUP BY customer_id;
 
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
         SELECT product_id, COUNT(customer_id) AS Times_Ordered 
-           ...> FROM sales 
-           ...> GROUP BY product_id 
-           ...> ORDER BY Times_Ordered DESC;
+        FROM sales 
+        GROUP BY product_id 
+        ORDER BY Times_Ordered DESC;
 
 
 5. Which item was the most popular for each customer?
 
          SELECT s.product_id, product_name, COUNT(customer_id) AS Times_Ordered 
-            ...> FROM sales s JOIN (SELECT product_id, product_name FROM menu) t 
-            ...>   ON s.product_id = t.product_id 
-            ...> GROUP BY s.product_id 
-            ...> ORDER BY Times_Ordered DESC;
+         FROM sales s JOIN (SELECT product_id, product_name FROM menu) t 
+           ON s.product_id = t.product_id 
+         GROUP BY s.product_id 
+         ORDER BY Times_Ordered DESC;
             
          OR
          
          SELECT m.product_id, product_name, COUNT(*) AS Times_Ordered 
-            ...> FROM sales s JOIN menu m 
-            ...>   ON s.product_id = m.product_id 
-            ...> GROUP BY m.product_id, product_name 
-            ...> ORDER BY Times_Ordered DESC;
+         FROM sales s JOIN menu m 
+           ON s.product_id = m.product_id 
+         GROUP BY m.product_id, product_name 
+         ORDER BY Times_Ordered DESC;
             
           OR
           
           SELECT m.product_id, product_name, COUNT(customer_id) AS Times_Ordered 
-             ...> FROM sales s LEFT JOIN menu m 
-             ...>   ON s.product_id = m.product_id 
-             ...> GROUP BY m.product_id, product_name 
-             ...> ORDER BY Times_Ordered DESC;
+          FROM sales s LEFT JOIN menu m 
+            ON s.product_id = m.product_id 
+          GROUP BY m.product_id, product_name 
+          ORDER BY Times_Ordered DESC;
 
 
 6. Which item was purchased first by the customer after they became a member?
